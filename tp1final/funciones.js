@@ -7,19 +7,29 @@ function botonUso(x, y, ancho, alto) {
   return mouseX > x && mouseX < x+ancho && mouseY > y && mouseY < y+alto;
 }
 
-
-function escribirTitulo(texto, x, y, tam, alinea) {//para ecribir el texto del título 
+//USAR O NO USAR ESTA FUNCIÓN PORQUE ES IGUAL A LA DOS
+function escribirTitulo(texto, x, y, tam, alinea) {//para ecribir el texto del título
   stroke(0);
-  fill(255)
-    textAlign(CENTER);
+  fill(255);
+  textAlign(CENTER);
   textSize(tam);
   text(texto, x, y);
 }
-
+//ESTA FUNCIÓN NO SE ESTÁ USANDO
 function escribirParrafos (texto, x, y, tam, alinea) {//
   textAlign(CENTER);
   textSize(tam);
   text(texto, x, y);
+}
+
+function escribirParrafos2(texto) {
+  noStroke();
+  fill(0, 150);
+  rect(0, 0, width, 150);
+  textAlign(LEFT);
+  textSize(20);
+  fill(255);
+  text(texto, 30, 20, width-50);
 }
 
 function botonDibujo2(texto, x, y, ancho, alto) {
@@ -40,7 +50,7 @@ function escribirTitulo2(texto, x, y) {//para ecribir el texto del título y los
   textAlign(CENTER, CENTER);
   stroke(0);
   fill(255)
-  textSize(25);
+    textSize(25);
   text(texto, x, y);
   pop();
 }

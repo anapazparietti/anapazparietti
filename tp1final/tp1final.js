@@ -3,9 +3,9 @@
 let imagenes = [];
 let estado;
 let bestiario=[];
-let num=0;
-let nino=false;
-let viaje=false;
+let num=0;//NO SE ESTÁ USANDO
+let nino;
+let viaje;
 
 function preload() {
   for (let i=0; i<12; i++) {
@@ -17,6 +17,11 @@ function preload() {
 function setup() {
   createCanvas(640, 480);
   estado = "comienzo";
+  textAlign(CENTER);
+  stroke(0);
+  fill(255);
+  nino=false;
+  viaje=false;
 }
 
 
@@ -26,19 +31,31 @@ function draw() {
   //INICIO
   if (estado ==="comienzo") {
     cargarImagen(imagenes[0], 0, 0, 640, 480, RIGHT);
-    escribirTitulo("Bestiario", width/2, 100, 100, CENTER);
+    textSize(100);
+    //escribirTitulo("Bestiario", width/2, 100, 100, CENTER);
+    text("Bestiario", width/2, 100);
     //botones
     botonDibujo2("Créditos", 350, 400, 120, 50);
     botonDibujo2("Comenzar", 100, 400, 200, 50);
 
     //CRÉDITOS
   } else if (estado==="creditos") {
-    escribirTitulo("Créditos", width/2, 100, 80, CENTER);
-    escribirTitulo("Bestiario de Julio Cortázar", width/2, 170, 35, CENTER);
-    escribirTitulo("Trabajo Final de pmiw", width/2, 230, 20, CENTER);
-    escribirTitulo("Ana Paz Parietti 93534/8", width/2, 265, 25, CENTER);
-    escribirTitulo("Naiara Victoria Coronel 119000/2", width/2, 300, 25, CENTER);
-    escribirTitulo("Imágenes hechas con ia", width/2, 350, 20, CENTER);
+    //escribirTitulo("Créditos", width/2, 100, 80, CENTER);
+    textSize(80);
+    text("Créditos", width/2, 100);
+    //escribirTitulo("Bestiario de Julio Cortázar", width/2, 170, 35, CENTER);
+    textSize(35);
+    text("Bestiario de Julio Cortázar", width/2, 170);
+    textSize(20);
+    text("Trabajo Final de pmiw",width/2, 230);
+    text("Imágenes hechas con ia", width/2, 350);
+    textSize(25);
+    text("Ana Paz Parietti 9353/8", width/2, 265);
+    text("Naiara Victoria Coronel 119000/2", width/2, 300);
+    //escribirTitulo("Trabajo Final de pmiw", width/2, 230, 20, CENTER);
+    //escribirTitulo("Ana Paz Parietti 93534/8", width/2, 265, 25, CENTER);
+    //escribirTitulo("Naiara Victoria Coronel 119000/2", width/2, 300, 25, CENTER);
+    //escribirTitulo("Imágenes hechas con ia", width/2, 350, 20, CENTER);
     //botón
     botonDibujo2("Volver", 20, 20, 120, 50);
 
@@ -48,8 +65,7 @@ function draw() {
     //botones
     botonDibujo2("Continuar", 350, 400, 150, 50);
     //párrafo
-    textSize(20);
-    text(bestiario[0], 50, 50, 500);
+    escribirParrafos2(bestiario[0]);
 
     //CAP2 PANTALLA3
   } else if (estado==="pant3") {
@@ -58,8 +74,8 @@ function draw() {
     botonDibujo2("Explorar la casa", 370, 400, 200, 50);
     botonDibujo2("Quedarte con tus primos", 35, 400, 300, 50);
     //párrafo
-    textSize(20);
-    text(bestiario[1], 50, 50, 500);
+    escribirParrafos2(bestiario[1]);
+
 
     //CAP3 PANTALLA 4
   } else if (estado==="pant4") {//si elegis jugar con tus primos
@@ -67,7 +83,8 @@ function draw() {
     //boton
     botonDibujo2("Ir a cenar", 200, 400, 200, 50);
     //parrafo
-    text(bestiario[2], 50, 50, 500);
+    escribirParrafos2(bestiario[2]);
+
 
     //CAP5-6 PANTALLA 5
   } else if (estado==="pant5") {//capitulo5/6 cena y se habla del viaje
@@ -76,7 +93,7 @@ function draw() {
     botonDibujo2("Ir al viaje", 100, 400, 200, 50);
     botonDibujo2("No ir al viaje", 350, 400, 200, 50);
     //parrafos
-    text(bestiario[3], 50, 50, 500);
+    escribirParrafos2(bestiario[3]);
 
     //CAP5-6 PANTALLA 6
   } else if (estado==="pant6") {//si elegis ir al viaje, te cuentan la reglas
@@ -84,7 +101,7 @@ function draw() {
     //boton
     botonDibujo2("Continuar", 100, 400, 200, 50);
     //parrafo
-    text(bestiario[4], 50, 50, 500);
+    escribirParrafos2(bestiario[4]);
 
     //CAP 8-9 PANTALLA 7
   } else if (estado==="pant7") {//capitulo 8/9 vuelven del viaje e isabel tiene un encuentro con el tigre
@@ -93,7 +110,7 @@ function draw() {
     botonDibujo2("Quedarse en la casa", 330, 400, 250, 50);
     botonDibujo2("Irte de la casa", 100, 400, 200, 50);//se va de la casa, FINAL ALT 4
     //parrafo
-    text(bestiario[5], 50, 50, 500);
+    escribirParrafos2(bestiario[5]);
 
     //CAP10 PANTALLA 8
   } else if (estado==="pant8") {//se queda en la casa y la historia continua, le preguntan dónde está el tigre
@@ -102,7 +119,7 @@ function draw() {
     botonDibujo2("Biblioteca", 350, 400, 130, 50);
     botonDibujo2("Estudio de Nene", 100, 400, 200, 50);
     //parrafo
-    text(bestiario[6], 50, 50, 500);
+    escribirParrafos2(bestiario[6]);
 
     //FINAL REAL PANTALLA 9
   } else if (estado==="pant9") {//FINAL REAL, ELEGISTE ESTUDIO
@@ -110,7 +127,7 @@ function draw() {
     //boton
     botonDibujo2("Volver a jugar", 100, 400, 200, 50);
     //parrafo
-    text(bestiario[7], 50, 50, 500);
+    escribirParrafos2(bestiario[7]);
 
     //FINAL ALT 1 PANTALLA 10
   } else if (estado==="pant10") {
@@ -118,7 +135,7 @@ function draw() {
     //boton
     botonDibujo2("Volver a jugar", 100, 400, 200, 50);
     //parrafo
-    text(bestiario[8], 50, 50, 500);
+    escribirParrafos2(bestiario[8]);
 
     //PANTALLA 11, elegiste explorar la cocina
   } else if (estado==="pant11") {
@@ -127,7 +144,7 @@ function draw() {
     botonDibujo2("Confiar en Nino", 100, 400, 200, 50);
     botonDibujo2("No confiar en Nino", 350, 400, 210, 50);
     //parrafo
-    text(bestiario[9], 50, 50, 500);
+    escribirParrafos2(bestiario[9]);
 
     // PANTALLA12, VAS A EXPLORAR A BIBLIOTECA, DESPUÉS VAS A CENAR
   } else if (estado==="pant12") {
@@ -135,7 +152,7 @@ function draw() {
     //boton
     botonDibujo2("Ir a la cena", 100, 400, 200, 50);//no anda el boton
     //parrafo
-    text(bestiario[11], 50, 50, 500);
+    escribirParrafos2(bestiario[11]);
 
     //PANTALLA 13, decidiste no ir al viaje familiar
   } else if (estado==="pant13") {
@@ -144,7 +161,7 @@ function draw() {
     botonDibujo2("Quedarse en el cuarto", 80, 400, 250, 50);
     botonDibujo2("Ir a explorar", 380, 400, 140, 50);//ir a explorar
     //parrafo
-    text(bestiario[12], 50, 50, 500);
+    escribirParrafos2(bestiario[12]);
 
     //PANTALLA 14
   } else if (estado==="pant14") { //FINAL ALT 2, solo si no confías en nino, no viajas y decidís explorar.
@@ -153,7 +170,7 @@ function draw() {
     botonDibujo2("Volver a jugar", 100, 400, 200, 50);
     //parrafo
     text("pant14", 200, 200);
-    text(bestiario[14], 50, 50, 500);
+    escribirParrafos2(bestiario[14]);
 
     //PANTALLA 15 FINAL ALT 4
   } else if (estado==="pant15") { // la historia continúa, te preguntan donde esta el tigre y elegís biblioteca
@@ -161,7 +178,7 @@ function draw() {
     //botones
     botonDibujo2("Volver a jugar", 100, 400, 200, 50);
     //parrafo
-    text(bestiario[14], 50, 50, 500);
+    escribirParrafos2(bestiario[14]);
 
     //FINAL ISABEL SE VA
   } else if (estado==="pant16") { // isabel se va de la casa
@@ -169,7 +186,7 @@ function draw() {
     //botones
     botonDibujo2("Volver a jugar", 100, 400, 200, 50);
     //parrafo
-    text(bestiario[15], 50, 50, 500);
+    escribirParrafos2(bestiario[15]);
 
     //PANTALLA 17, explorar la casa al principio
   } else if (estado==="pant17") {
@@ -178,7 +195,7 @@ function draw() {
     botonDibujo2("Ir a la cocina", 100, 400, 200, 50);
     botonDibujo2("Ir a la biblioteca", 350, 400, 200, 50);
     //parrafo
-    text(bestiario[16], 50, 50, 500);
+    escribirParrafos2(bestiario[16]);
 
     //PANTALLA 18 te quedas en tu cuarto cuando la familia se va de viaje
   } else if (estado==="pant18") { // isa no va al viaje y se queda en su cuarto
@@ -186,7 +203,7 @@ function draw() {
     //botones
     botonDibujo2("Continuar", 100, 400, 200, 50);
     //parrafo
-    text(bestiario[17], 50, 50, 500);
+    escribirParrafos2(bestiario[17]);
   } else {
     cargarImagen(imagenes[1], 0, 0, 640, 480, RIGHT);//última pantalla
   }
@@ -244,13 +261,13 @@ function mousePressed() {
   } else if (estado==="pant9") { // FINAL REAL
     if (botonUso(100, 400, 200, 50)) {
       estado="pant3"; //volver
-       nino=false;
+      nino=false;
       viaje=false;
     }
   } else if (estado==="pant10") { // FINAL ALT 1
     if (botonUso(100, 400, 200, 50)) {
       estado="pant3"; //volver
-       nino=false;
+      nino=false;
       viaje=false;
     }
   } else if (estado==="pant11") {
@@ -280,7 +297,7 @@ function mousePressed() {
   } else if (estado==="pant15") {
     if (botonUso(100, 400, 200, 50)) {
       estado="pant3"; //volver
-       nino=false;
+      nino=false;
       viaje=false;
     }
   } else if (estado==="pant16") {
@@ -298,5 +315,4 @@ function mousePressed() {
       estado= "pant7"//la historia continua, encuentro con el tigre
     }
   }
-  //LLAVE FINAL MOUSE PRESSED
 }
